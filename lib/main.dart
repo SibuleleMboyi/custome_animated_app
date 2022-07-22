@@ -39,6 +39,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
     riveAnimationController = OneShotAnimation("active", autoplay: false);
   }
 
+  void _playButtonAnimation(RiveAnimationController controller) {
+    if (controller.isActive == false) {
+      controller.isActive = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +52,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
         children: [
           _backgroundImage(),
           _animatedBackground(),
+          _startCourseButton(),
         ],
       ),
     );
@@ -78,5 +85,72 @@ class _OnboardScreenState extends State<OnboardScreen> {
             ),
           ),
         ],
+      );
+
+  Widget _startCourseButton() => Center(
+        child: GestureDetector(
+          onTap: () => _playButtonAnimation(riveAnimationController),
+          child: SizedBox(
+            //color: Colors.red,
+            width: 200.0,
+            height: 100.0,
+            child: Stack(
+              children: [
+                Positioned(
+                  right: 0.0,
+                  top: 25.0,
+                  child: Center(
+                    child: Container(
+                      height: 52.0,
+                      width: 180.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 0.0,
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                    child: Container(
+                      //height: 20.0,
+                      width: 250.0,
+                      decoration:
+                          BoxDecoration(color: Colors.white.withOpacity(0.3)),
+                    ),
+                  ),
+                ),
+                RiveAnimation.asset(
+                  "rive_assets/button.riv",
+                  controllers: [riveAnimationController],
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () =>
+                              _playButtonAnimation(riveAnimationController),
+                          icon: const Icon(Icons.arrow_forward),
+                        ),
+                        const Text(
+                          "Start the course",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(172, 0, 0, 0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       );
 }
