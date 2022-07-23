@@ -52,7 +52,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
         children: [
           _backgroundImage(),
           _animatedBackground(),
-          _startCourseButton(),
+          _bodyContent(),
         ],
       ),
     );
@@ -87,70 +87,109 @@ class _OnboardScreenState extends State<OnboardScreen> {
         ],
       );
 
-  Widget _startCourseButton() => Center(
-        child: GestureDetector(
-          onTap: () => _playButtonAnimation(riveAnimationController),
-          child: SizedBox(
-            //color: Colors.red,
-            width: 200.0,
-            height: 100.0,
-            child: Stack(
-              children: [
-                Positioned(
-                  right: 0.0,
-                  top: 25.0,
-                  child: Center(
-                    child: Container(
-                      height: 52.0,
-                      width: 180.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: Colors.black54,
+  Widget _startCourseButton() => GestureDetector(
+        onTap: () => _playButtonAnimation(riveAnimationController),
+        child: SizedBox(
+          width: 200.0,
+          height: 80.0,
+          child: Stack(
+            children: [
+              RiveAnimation.asset(
+                "rive_assets/button.riv",
+                controllers: [riveAnimationController],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () =>
+                            _playButtonAnimation(riveAnimationController),
+                        icon: const Icon(Icons.arrow_forward),
+                      ),
+                      const Text(
+                        "Start the course",
+                        style: TextStyle(
+                          fontFamily: "Trajan Pro",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+              // remove this to its widget
+
+              /*  Positioned(
+                right: 10.0,
+                top: 25.0,
+                child: Center(
+                  child: Container(
+                    height: 40.0,
+                    width: 140.0, //180.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(60.0),
+                      color: Colors.black54,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.3)),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 0.0,
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                    child: Container(
-                      //height: 20.0,
-                      width: 250.0,
-                      decoration:
-                          BoxDecoration(color: Colors.white.withOpacity(0.3)),
-                    ),
-                  ),
-                ),
-                RiveAnimation.asset(
-                  "rive_assets/button.riv",
-                  controllers: [riveAnimationController],
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () =>
-                              _playButtonAnimation(riveAnimationController),
-                          icon: const Icon(Icons.arrow_forward),
-                        ),
-                        const Text(
-                          "Start the course",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(172, 0, 0, 0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+              ), */
+            ],
           ),
         ),
       );
+
+  Widget _bodyContent() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(30.0, 130.0, 20.0, 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Learn design \n & code",
+            style: TextStyle(
+              fontFamily: "Poppins-Bold",
+              fontSize: 60.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            "Don't skip design. Learn design and code by building"
+            "real apps with Flutter, React and Swift. Complete courses about"
+            "the best tools.",
+            style: TextStyle(
+              fontFamily: "Inter-Regular",
+              fontSize: 15.0,
+            ),
+          ),
+          const SizedBox(height: 200.0),
+          _startCourseButton(),
+          const SizedBox(height: 10.0),
+          const Text(
+            "Purchase includes access to 30+ courses, 240+ premium Tutorials,"
+            "120+ hours of videos, source files and certificates.",
+            style: TextStyle(
+              fontFamily: "Inter-Regular",
+              fontSize: 15.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
