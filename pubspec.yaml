@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  logger: ^1.1.0
   rive: ^0.9.0
 
 dev_dependencies:
@@ -50,6 +51,7 @@ flutter:
   assets:
     - rive_assets/
     - assets/
+
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -64,7 +66,7 @@ flutter:
     - family: Inter-Regular
       fonts:
         - asset: fonts/Inter-Regular.ttf
-        
+
     - family: Inter-SemiBold
       fonts:
         - asset: fonts/Inter-SemiBold.ttf
@@ -72,6 +74,5 @@ flutter:
     - family: Poppins
       fonts:
         - asset: fonts/Poppins-Bold.ttf
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
