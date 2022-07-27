@@ -66,21 +66,22 @@ class _CustomFormState extends State<CustomForm> {
                 topLeft: Radius.circular(10),
                 bottomLeft: Radius.circular(30),
               ),
-              color: Color.fromARGB(255, 238, 112, 74),
+              //color: Color.fromARGB(255, 238, 112, 74),
+              color: Color.fromARGB(255, 224, 98, 115),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.arrow_forward),
+                  icon: const Icon(Icons.arrow_forward, color: Colors.white),
                 ),
                 const Text(
                   "Sign In",
                   style: TextStyle(
                     fontFamily: "Trajan Pro",
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(width: 40.0)

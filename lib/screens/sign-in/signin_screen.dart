@@ -20,6 +20,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.grey,
       body: Center(child: CustomCard()),
     );
   }

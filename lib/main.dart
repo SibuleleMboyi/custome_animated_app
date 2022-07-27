@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      //home: const WelcomeScreen(),
-      home: const SignInScreen(),
+      home: const WelcomeScreen(),
+      //home: const SignInScreen(),
     );
   }
 }
