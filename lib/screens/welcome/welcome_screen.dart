@@ -1,4 +1,7 @@
+import 'package:custome_animated_app/screens/sign-in/widgets/widgets.dart';
+import 'package:custome_animated_app/screens/welcome/cubit/welcome_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/widgets.dart';
 
@@ -9,7 +12,24 @@ class WelcomeScreen extends StatefulWidget {
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 10));
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOutBack,
+    );
+
+    _animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +38,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           const BackgroundImage(),
           const AnimatedBackground(),
           _bodyContent(),
+          BlocBuilder<WelcomeCubit, WelcomeState>(
+            builder: (context, state) {
+              return SizedBox(
+                // child: context.read<WelcomeCubit>().startCourseButton(isClicked: isClicked),
+                child: state.startCourseButton == true
+                    ? _animatedContainer()
+                    : const SizedBox.shrink(),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -59,6 +89,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _animatedContainer() {
+    Future.delayed(const Duration(seconds: 10), () {});
+
+    /*return AnimatedContainer(
+      height: 450.0,
+      width: 300.0,
+      color: Colors.greenAccent,
+      curve: Curves.easeInOutBack,
+      duration: const Duration(seconds: 5),
+    );*/
+
+    return ScaleTransition(
+      scale: _animation,
+      alignment: Alignment.bottomLeft,
+      child: AnimatedBuilder(
+        animation: _animationController,
+        builder: ((context, child) => const Center(child: CustomCard())),
       ),
     );
   }

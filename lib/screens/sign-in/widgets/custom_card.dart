@@ -99,7 +99,7 @@ class _CustomCardState extends State<CustomCard> {
                 ),
                 const SizedBox(height: 20.0),
                 Row(
-                  //mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
                       onPressed: () {},
@@ -108,7 +108,7 @@ class _CustomCardState extends State<CustomCard> {
                         size: 30.0,
                       ),
                     ),
-                    const SizedBox(width: 59.0, height: 10.0),
+                    //const SizedBox(width: 82.0, height: 10.0),
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -116,7 +116,7 @@ class _CustomCardState extends State<CustomCard> {
                         size: 30.0,
                       ),
                     ),
-                    const SizedBox(width: 59.0, height: 10.0),
+                    // const SizedBox(width: 82.0, height: 10.0),
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -139,8 +139,8 @@ class _CustomCardState extends State<CustomCard> {
         CompositedTransformTarget(
           link: layerLink,
           child: Container(
-            height: 560, //560
-            width: 335, // 335
+            height: 680, //560
+            width: 360, // 335
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 gradient: const LinearGradient(

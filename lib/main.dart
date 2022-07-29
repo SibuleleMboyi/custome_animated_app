@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'screens/screens.dart';
+import 'screens/welcome/cubit/welcome_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: BlocProvider<WelcomeCubit>(
+        create: (context) => WelcomeCubit(),
+        child: const WelcomeScreen(),
+      ),
       //home: const SignInScreen(),
     );
   }
