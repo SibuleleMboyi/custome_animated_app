@@ -1,4 +1,5 @@
 import 'package:custome_animated_app/screens/sign-in/widgets/widgets.dart';
+import 'package:custome_animated_app/screens/sign-up/widgets/widgets.dart';
 import 'package:custome_animated_app/screens/welcome/cubit/welcome_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +21,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 10));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 8)); //15
     _animation = CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOutBack,
@@ -31,25 +32,31 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    _animation.isDismissed;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const BackgroundImage(),
-          const AnimatedBackground(),
-          _bodyContent(),
-          BlocBuilder<WelcomeCubit, WelcomeState>(
-            builder: (context, state) {
-              return SizedBox(
-                // child: context.read<WelcomeCubit>().startCourseButton(isClicked: isClicked),
-                child: state.startCourseButton == true
-                    ? _animatedContainer()
-                    : const SizedBox.shrink(),
-              );
-            },
-          ),
-        ],
-      ),
+      resizeToAvoidBottomInset: false,
+      body: BlocBuilder<WelcomeCubit, WelcomeState>(builder: (context, state) {
+        return Stack(
+          children: [
+            const BackgroundImage(),
+            const AnimatedBackground(),
+            _bodyContent(),
+            state.startCourseButton == true
+                ? _signInAnimatedContainer()
+                : const SizedBox.shrink(),
+            state.dontHaveAccount == true
+                ? _signUpAnimatedContainer()
+                : const SizedBox.shrink(),
+          ],
+        );
+      }),
     );
   }
 
@@ -93,24 +100,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget _animatedContainer() {
-    Future.delayed(const Duration(seconds: 10), () {});
-
-    /*return AnimatedContainer(
-      height: 450.0,
-      width: 300.0,
-      color: Colors.greenAccent,
-      curve: Curves.easeInOutBack,
-      duration: const Duration(seconds: 5),
-    );*/
-
+  Widget _signInAnimatedContainer() {
     return ScaleTransition(
       scale: _animation,
       alignment: Alignment.bottomLeft,
-      child: AnimatedBuilder(
-        animation: _animationController,
-        builder: ((context, child) => const Center(child: CustomCard())),
-      ),
+      child: const Center(child: SignInCustomAnimatedContainer()),
+    );
+  }
+
+  Widget _signUpAnimatedContainer() {
+    return ScaleTransition(
+      scale: _animation,
+      alignment: Alignment.bottomLeft,
+      child: const Center(child: SignUpCustomAnimatedContainer()),
     );
   }
 }

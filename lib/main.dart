@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'screens/screens.dart';
@@ -18,7 +19,18 @@ class MyApp extends StatelessWidget {
       title: 'Custom Animation App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.grey[50],
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          color: Colors.white,
+          iconTheme:  IconThemeData(color: Colors.black),
+        // ignore: deprecated_member_use
+        textTheme:  TextTheme( headline6: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w600,),)
+        ),
+
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      
       debugShowCheckedModeBanner: false,
       home: BlocProvider<WelcomeCubit>(
         create: (context) => WelcomeCubit(),

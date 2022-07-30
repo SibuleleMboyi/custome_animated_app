@@ -1,4 +1,3 @@
-import 'package:custome_animated_app/screens/screens.dart';
 import 'package:custome_animated_app/screens/welcome/cubit/welcome_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,8 +72,7 @@ class _StartButtonState extends State<StartButton> {
     _playButtonAnimation(riveAnimationController);
 
     Future.delayed(const Duration(seconds: 1), () {
-       context.read<WelcomeCubit>().startCourseButton(isClicked: true);
+      context.read<WelcomeCubit>().startCourseButton(isClicked: true);
     });
-   
   }
 }

@@ -93,7 +93,7 @@ class _CustomFormState extends State<CustomForm> {
             children: [
               Container(
                 height: 1.0,
-                width: 144.5,
+                width: 130.5,
                 color: Colors.black12,
               ),
               const Text(
@@ -106,7 +106,7 @@ class _CustomFormState extends State<CustomForm> {
               ),
               Container(
                 height: 1.0,
-                width: 144.5,
+                width: 130.5,
                 color: Colors.black12,
               ),
             ],
