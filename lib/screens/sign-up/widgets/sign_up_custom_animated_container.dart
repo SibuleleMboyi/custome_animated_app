@@ -77,9 +77,8 @@ class _SignUpCustomAnimatedContainerState
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Access up to 240+ hours of content. "
-                        "Learn design and code by building "
-                        "real apps with Flutter, React and Swift.",
+                        "By signing up, you allow our system to keep your records and tests "
+                        " so you can access them in the future. ",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500),
                       ),

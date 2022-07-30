@@ -50,7 +50,7 @@ class _StartButtonState extends State<StartButton> {
                             icon: const Icon(Icons.arrow_forward),
                           ),
                           const Text(
-                            "Start the course",
+                            "Start the journey",
                             style: TextStyle(
                               fontFamily: "Trajan Pro",
                               fontWeight: FontWeight.bold,

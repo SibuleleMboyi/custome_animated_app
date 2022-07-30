@@ -68,7 +68,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Text(
-            "Learn \ndesign \n& code",
+            "Care \nFor your \nHealth",
             style: TextStyle(
               fontFamily: "Poppins-Bold",
               fontSize: 60.0,
@@ -76,20 +76,22 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
           ),
           Text(
-            "Don't skip design. Learn design and code by building "
-            "real apps with Flutter, React and Swift. Complete courses about "
-            "the best tools.",
+            "WHO statistics reavel that Heart Disease is the leading killer monster in the world. "
+            "And we believe that disasters don't just happen, they are triggered by a series of events. "
+            "This platform helps you mitigate those series of events to avoid being aware when its too late "
+            "by checking how at risk are you in getting this disease. "
+            "Prevention is better than cure.",
             style: TextStyle(
               fontFamily: "Inter-Regular",
               fontSize: 15.0,
             ),
           ),
-          SizedBox(height: 200.0),
+          SizedBox(height: 150.0),
           StartButton(),
           SizedBox(height: 10.0),
           Text(
-            "Purchase includes access to 30+ courses, 240+ premium Tutorials, "
-            "120+ hours of videos, source files and certificates. ",
+            "Website for this service is currently not available, "
+            "and we will keep you updated once we have it built and ready to use.",
             style: TextStyle(
               fontFamily: "Inter-Regular",
               fontSize: 13.0,
@@ -101,6 +103,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   Widget _signInAnimatedContainer() {
+    
     return ScaleTransition(
       scale: _animation,
       alignment: Alignment.bottomLeft,
