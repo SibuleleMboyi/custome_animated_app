@@ -37,19 +37,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       body: BlocBuilder<WelcomeCubit, WelcomeState>(builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            context.read<WelcomeCubit>().dontHaveAccount(isClicked: false);
-            context.read<WelcomeCubit>().startCourseButton(isClicked: false);
-            context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
+            //context.read<WelcomeCubit>().dontHaveAccount(isClicked: false);
+            //context.read<WelcomeCubit>().startCourseButton(isClicked: false);
+            //context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
           },
           child: Stack(
             children: [
               const BackgroundImage(),
               const AnimatedBackground(),
               _bodyContent(),
-              state.startCourseButton == true
-                  ? _signInAnimatedContainer(context: context)
+              state.startCourseButton 
+                  ? _signInAnimatedContainer(context: context, state: state)
                   : const SizedBox.shrink(),
-              state.dontHaveAccount == true
+              state.dontHaveAccount && state.startCourseButton && !state.dismissed
                   ? _signUpAnimatedContainer()
                   : const SizedBox.shrink(),
             ],
@@ -99,19 +99,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget _signInAnimatedContainer({required BuildContext context}) {
+  Widget _signInAnimatedContainer(
+      {required BuildContext context, required WelcomeState state}) {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(seconds: 2)); //2
+        vsync: this, duration: const Duration(seconds: 1)); //2
 
     _animation = CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOutBack,
     );
+
     _animationController.forward();
 
     return ScaleTransition(
       scale: _animation,
-      alignment: Alignment.bottomLeft,
+      alignment: Alignment.topCenter,
       child: const Center(child: SignInCustomAnimatedContainer()),
     );
   }

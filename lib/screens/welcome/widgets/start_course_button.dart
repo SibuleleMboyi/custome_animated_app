@@ -74,6 +74,7 @@ class _StartButtonState extends State<StartButton> {
     Future.delayed(const Duration(milliseconds: 900), () {
       context.read<WelcomeCubit>().startCourseButton(isClicked: true);
           context.read<WelcomeCubit>().hasPopedUp(isClicked: false);
+           context.read<WelcomeCubit>().isDismissed(dismissed: false);
 
     });
   }

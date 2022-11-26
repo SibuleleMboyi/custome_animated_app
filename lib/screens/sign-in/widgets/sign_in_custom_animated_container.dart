@@ -1,5 +1,3 @@
-import 'package:custome_animated_app/screens/modeling/cubit/modeling_cubit.dart';
-import 'package:custome_animated_app/screens/screens.dart';
 import 'package:custome_animated_app/screens/welcome/cubit/welcome_cubit.dart';
 import 'package:custome_animated_app/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -227,13 +225,12 @@ class _SignInCustomAnimatedContainerState
             child: IconButton(
               color: Colors.black87,
               onPressed: () {
-                context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
+                //context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
 
-               
-                  context
-                      .read<WelcomeCubit>()
-                      .startCourseButton(isClicked: false);
-                
+               // context.read<WelcomeCubit>().isDismissed(dismissed: true);
+                context
+                    .read<WelcomeCubit>()
+                    .startCourseButton(isClicked: false);
               },
               icon: const Icon(
                 Icons.cancel,
@@ -263,10 +260,7 @@ class _SignInCustomAnimatedContainerState
           );
         },
         pageBuilder: ((context, animation, secondaryAnimation) =>
-            BlocProvider<ModelingCubit>(
-              create: (context) => ModelingCubit(),
-              child: const ModelScreen(),
-            )),
+            const Scaffold()),
       ),
     );
   }
