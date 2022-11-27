@@ -156,10 +156,7 @@ class _SignUpCustomAnimatedContainerState
               child: IconButton(
                 color: Colors.black87,
                 onPressed: () {
-                  context.read<WelcomeCubit>().isDismissed(dismissed: true);
-                  context
-                      .read<WelcomeCubit>()
-                      .startCourseButton(isClicked: false);
+                  context.read<WelcomeCubit>().isDismissedSignUp(dismissedSignUp: true);
                   context
                       .read<WelcomeCubit>()
                       .dontHaveAccount(isClicked: false);

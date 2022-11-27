@@ -22,8 +22,12 @@ class WelcomeCubit extends Cubit<WelcomeState> {
     emit(state.copyWith(annonymousUser: isClicked));
   }
 
-  void isDismissed({required bool dismissed}) {
-    emit(state.copyWith(dismissed: dismissed));
+  void isDismissedSignUp({required bool dismissedSignUp}) {
+    emit(state.copyWith(dismissedSignUp: dismissedSignUp));
+  }
+
+   void isDismissedSignIn({required bool dismissedSignIn}) {
+    emit(state.copyWith(dismissedSignIn: dismissedSignIn));
   }
 
   void clearStates() {

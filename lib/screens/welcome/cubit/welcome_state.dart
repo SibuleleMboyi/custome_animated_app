@@ -6,14 +6,18 @@ class WelcomeState {
   final bool hasPopedUp;
   final bool dontHaveAccount;
   final bool annonymousUser;
-  final bool dismissed;
+  final bool dismissedSignUp;
+    final bool dismissedSignIn;
+
 
   const WelcomeState({
     required this.startCourseButton,
     required this.hasPopedUp,
     required this.dontHaveAccount,
     required this.annonymousUser,
-    required this.dismissed,
+    required this.dismissedSignUp,
+        required this.dismissedSignIn,
+
   });
 
   factory WelcomeState.initial() {
@@ -22,7 +26,9 @@ class WelcomeState {
       hasPopedUp: false,
       dontHaveAccount: false,
       annonymousUser: false,
-      dismissed: false,
+      dismissedSignUp: false,
+            dismissedSignIn: false,
+
     );
   }
 
@@ -33,13 +39,15 @@ class WelcomeState {
       {bool? startCourseButton,
       bool? hasPopedUp,
       bool? dontHaveAccount,
-      bool? annonymousUser, bool? dismissed, }) {
+      bool? annonymousUser, bool? dismissedSignUp,  bool? dismissedSignIn,}) {
     return WelcomeState(
       startCourseButton: startCourseButton ?? this.startCourseButton,
       hasPopedUp: hasPopedUp ?? this.hasPopedUp,
       dontHaveAccount: dontHaveAccount ?? this.dontHaveAccount,
       annonymousUser: annonymousUser ?? this.annonymousUser,
-      dismissed: dismissed ?? this.dismissed,
+      dismissedSignUp: dismissedSignUp ?? this.dismissedSignUp,
+            dismissedSignIn: dismissedSignIn ?? this.dismissedSignIn,
+
     );
   }
 }

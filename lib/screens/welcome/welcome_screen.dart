@@ -35,25 +35,26 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BlocBuilder<WelcomeCubit, WelcomeState>(builder: (context, state) {
-        return GestureDetector(
-          onTap: () {
-            //context.read<WelcomeCubit>().dontHaveAccount(isClicked: false);
-            //context.read<WelcomeCubit>().startCourseButton(isClicked: false);
-            //context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
-          },
-          child: Stack(
-            children: [
-              const BackgroundImage(),
-              const AnimatedBackground(),
-              _bodyContent(),
-              state.startCourseButton 
-                  ? _signInAnimatedContainer(context: context, state: state)
-                  : const SizedBox.shrink(),
-              state.dontHaveAccount && state.startCourseButton && !state.dismissed
-                  ? _signUpAnimatedContainer()
-                  : const SizedBox.shrink(),
-            ],
-          ),
+        return Stack(
+          children: [
+            const BackgroundImage(),
+            const AnimatedBackground(),
+            _bodyContent(),
+            state.startCourseButton &&
+                    !state.dontHaveAccount &&
+                    !state.dismissedSignUp &&
+                    !state.dismissedSignUp
+                ? _signInAnimatedContainer()
+                : state.dontHaveAccount &&
+                        state.startCourseButton &&
+                        !state.dismissedSignUp
+                    ? _signUpAnimatedContainer()
+                    : state.dismissedSignUp && !state.dismissedSignIn
+                        ? _signUpAnimatedContainerDismissal()
+                        : state.dismissedSignIn
+                            ? _signInAnimatedContainerDismissal()
+                            : const SizedBox.shrink(),
+          ],
         );
       }),
     );
@@ -99,10 +100,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget _signInAnimatedContainer(
-      {required BuildContext context, required WelcomeState state}) {
+  Widget _signInAnimatedContainer() {
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(seconds: 1)); //2
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    ); //2
 
     _animation = CurvedAnimation(
       parent: _animationController,
@@ -118,7 +120,57 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
+  Widget _signInAnimatedContainerDismissal() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    ); //2
+
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOutBack,
+    );
+
+    _animationController.reverse(from: 1.0);
+
+    return ScaleTransition(
+      scale: _animation,
+      alignment: Alignment.topCenter,
+      child: const Center(child: SignInCustomAnimatedContainer()),
+    );
+  }
+
+  Widget _signUpAnimatedContainerDismissal() {
+    _animationController = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..reverse(from: 1.0);
+
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOutBack,
+    );
+
+    return ScaleTransition(
+      scale: _animation,
+      alignment: Alignment.centerLeft,
+      child: const Center(child: SignUpCustomAnimatedContainer()),
+    );
+  }
+
   Widget _signUpAnimatedContainer() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    ); //2
+
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOutBack,
+    );
+
+    _animationController.forward();
+
     return ScaleTransition(
       scale: _animation,
       alignment: Alignment.centerLeft,

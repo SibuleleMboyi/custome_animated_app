@@ -228,9 +228,11 @@ class _SignInCustomAnimatedContainerState
                 //context.read<WelcomeCubit>().hasPopedUp(isClicked: true);
 
                // context.read<WelcomeCubit>().isDismissed(dismissed: true);
-                context
-                    .read<WelcomeCubit>()
-                    .startCourseButton(isClicked: false);
+                                  context.read<WelcomeCubit>().isDismissedSignIn(dismissedSignIn: true);
+                  context
+                      .read<WelcomeCubit>()
+                      .startCourseButton(isClicked: false);
+
               },
               icon: const Icon(
                 Icons.cancel,
