@@ -151,22 +151,34 @@ class _SignUpCustomAnimatedContainerState
               ),
             ),
             Positioned(
-              bottom: 72.0,
-              left: 183.0,
-              child: IconButton(
-                color: Colors.black87,
-                onPressed: () {
-                  context.read<WelcomeCubit>().isDismissedSignUp(dismissedSignUp: true);
-                  context
-                      .read<WelcomeCubit>()
-                      .dontHaveAccount(isClicked: false);
-                },
-                icon: const Icon(
-                  Icons.cancel,
-                  size: 30.0,
+              bottom: 75.0,
+              left: 190.0,
+              child: SizedBox(
+                height: 40.0,
+                width: 40.0,
+                child: FloatingActionButton(
+                  elevation: 10.0,
+                  onPressed: () {
+                    context
+                        .read<WelcomeCubit>()
+                        .isDismissedSignUp(dismissedSignUp: true);
+                    context
+                        .read<WelcomeCubit>()
+                        .startCourseButton(isClicked: false);
+                    context
+                        .read<WelcomeCubit>()
+                        .dontHaveAccount(isClicked: false);
+                  },
+                  backgroundColor:
+                      const Color.fromARGB(255, 219, 80, 46).withOpacity(0.81),
+                  child: const Icon(
+                    Icons.cancel,
+                    size: 40,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },

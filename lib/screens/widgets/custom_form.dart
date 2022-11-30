@@ -77,7 +77,7 @@ class _CustomFormState extends State<CustomForm> {
                   icon: const Icon(Icons.arrow_forward, color: Colors.white),
                 ),
                 const Text(
-                  "Sign Up",
+                  "Sign In",
                   style: TextStyle(
                     fontFamily: "Trajan Pro",
                     fontWeight: FontWeight.bold,
