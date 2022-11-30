@@ -152,7 +152,7 @@ class _SignUpCustomAnimatedContainerState
             ),
             Positioned(
               bottom: 75.0,
-              left: 190.0,
+              left: 183.0,
               child: SizedBox(
                 height: 40.0,
                 width: 40.0,
