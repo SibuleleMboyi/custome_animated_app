@@ -57,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   : Alignment.topCenter,
               duration: const Duration(seconds: 1),
               curve: Curves.easeInOut,
-              child: animatedContainer(),
+              child: animatedBodyContent(),
             ),
             state.startCourseButton &&
                     !state.dontHaveAccount &&
@@ -79,7 +79,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 
-  Widget animatedContainer() {
+  Widget animatedBodyContent() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 80.0, 0.0, 10.0),
       child: Container(
@@ -97,6 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 30.0),
             Text(
               "Don't skip design. Learn design and code by "
               "building real apps with Flutter, React and Swift. "
@@ -106,7 +107,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 fontSize: 15.0,
               ),
             ),
-            SizedBox(height: 150.0),
+            SizedBox(height: 180.0),
             StartButton(),
             SizedBox(height: 10.0),
             Text(
@@ -114,50 +115,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               "premium tutorials, 120+ hours of videos, source codes and certificates.",
               style: TextStyle(
                 fontFamily: "Inter-Regular",
-                fontSize: 13.0,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _bodyContent() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(30.0, 130.0, 20.0, 10.0),
-      child: Container(
-        color: Colors.grey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              "Learn \nDesign \n& Code",
-              style: TextStyle(
-                fontFamily: "Poppins-Bold",
-                fontSize: 60.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              "Don't skip design. Learn design and code by "
-              "building real apps with Flutter, React and Swift. "
-              "Complete courses about the best tools. ",
-              style: TextStyle(
-                fontFamily: "Inter-Regular",
-                fontSize: 15.0,
-              ),
-            ),
-            SizedBox(height: 150.0),
-            StartButton(),
-            SizedBox(height: 10.0),
-            Text(
-              "Purchase includes access to 30+ courses, 240+ "
-              "premium tutorials, 120+ hours of videos, source codes and certificates.",
-              style: TextStyle(
-                fontFamily: "Inter-Regular",
-                fontSize: 13.0,
+                fontSize: 12.0,
               ),
             ),
           ],
